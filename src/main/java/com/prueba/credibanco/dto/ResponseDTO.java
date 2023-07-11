@@ -16,5 +16,7 @@ public class ResponseDTO {
 
 	private String message;
 	private TransactionDTO transactionDTO;
+	private Long cardId;
+	private Long balance;
 
 }
