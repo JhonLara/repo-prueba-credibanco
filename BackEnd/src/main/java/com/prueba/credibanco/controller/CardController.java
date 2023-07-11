@@ -1,5 +1,7 @@
 package com.prueba.credibanco.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prueba.credibanco.dto.BankDTO;
+import com.prueba.credibanco.dto.CardDTO;
 import com.prueba.credibanco.dto.ResponseDTO;
 import com.prueba.credibanco.entity.BankException;
 import com.prueba.credibanco.service.CardService;
@@ -22,6 +25,11 @@ public class CardController {
 
 	@Autowired
 	private CardService cardService;
+
+	@GetMapping()
+	public List<CardDTO> getCardList() {
+		return cardService.getCardList();
+	}
 
 	@GetMapping("/{productId}/number")
 	public ResponseEntity<ResponseDTO> getCardNumber(@PathVariable(name = "productId") Long productId) {

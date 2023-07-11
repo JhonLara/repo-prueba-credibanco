@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "6d3c8404-b9f7-44f8-8cdf-aedda9c35a90",
+		"name": "Prueba credibanco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24470347"
+	},
+	"item": [
+		{
+			"name": "Card",
+			"item": [
+				{
+					"name": "Generar numero tarjeta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card/665588/number",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card",
+								"665588",
+								"number"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activar tarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardId\": 6655885251288727,\r\n    \"owner\": \"Jhon Lara\",\r\n    \"cardType\": \"DEBITO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card/enroll",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card",
+								"enroll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recargar tarjeta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardId\": 6655885251288727,\r\n    \"balance\": 500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card/balance",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver saldo tarjeta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardId\": 6622554465462504,\r\n    \"balance\": 2000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card/balance/6655885251288727",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card",
+								"balance",
+								"6655885251288727"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver tarjetas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bloquear tarjeta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/card/5689001096214924",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"card",
+								"5689001096214924"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Realizar transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardId\": 6655885251288727,\r\n    \"balance\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/transaction/purchase",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"transaction",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anular transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactionId\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/transaction/anulation",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"transaction",
+								"anulation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/transaction/1",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"transaction",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener transacciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://bank-app-392505.uc.r.appspot.com/transaction",
+							"protocol": "https",
+							"host": [
+								"bank-app-392505",
+								"uc",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

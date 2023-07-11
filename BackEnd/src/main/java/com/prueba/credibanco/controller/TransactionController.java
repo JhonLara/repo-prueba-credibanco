@@ -1,5 +1,7 @@
 package com.prueba.credibanco.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prueba.credibanco.dto.BankDTO;
 import com.prueba.credibanco.dto.ResponseDTO;
+import com.prueba.credibanco.dto.TransactionDTO;
 import com.prueba.credibanco.entity.BankException;
 import com.prueba.credibanco.service.TransactionService;
 
@@ -21,6 +24,11 @@ public class TransactionController {
 
 	@Autowired
 	private TransactionService transactionService;
+
+	@GetMapping()
+	public List<TransactionDTO> getTransactionList() {
+		return transactionService.getTransactionList();
+	}
 
 	@PostMapping("/purchase")
 	public ResponseEntity<String> purchase(@RequestBody BankDTO infoBank) {

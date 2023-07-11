@@ -2,6 +2,8 @@ package com.prueba.credibanco.service.impl;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -104,6 +106,21 @@ public class TransactionServiceImpl implements TransactionService {
 			throw new BankException(TRANSACTION_NOT_FOUND);
 		}
 
+	}
+
+	@Override
+	public List<TransactionDTO> getTransactionList() {
+		List<Transaction> transactionList = transactionRepository.findAll();
+		List<TransactionDTO> transactionDTOList = new ArrayList<>();
+
+		transactionList
+				.forEach((transaction) -> transactionDTOList.add(new TransactionDTO(transaction.getIdTransaction(),
+						transaction.getCreationDate(), transaction.getPrice(), transaction.getState(),
+						new CardDTO(transaction.getCard().getCardId(), transaction.getCard().getNameOwner(),
+								transaction.getCard().getCardType(), transaction.getCard().getExpirationDate(),
+								transaction.getCard().getBalance(), transaction.getCard().getState()))));
+
+		return transactionDTOList;
 	}
 
 }

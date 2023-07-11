@@ -1,6 +1,8 @@
 package com.prueba.credibanco.service.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prueba.credibanco.dto.BankDTO;
+import com.prueba.credibanco.dto.CardDTO;
 import com.prueba.credibanco.entity.BankException;
 import com.prueba.credibanco.entity.Card;
 import com.prueba.credibanco.repository.CardRepository;
@@ -103,6 +106,15 @@ public class CardServiceImpl implements CardService {
 			throw new BankException(CARD_NOT_FOUND);
 		}
 
+	}
+
+	@Override
+	public List<CardDTO> getCardList() {
+		List<Card> cardList = cardRepository.findAll();
+		List<CardDTO> cardReturnList = new ArrayList<>();
+		cardList.forEach((card) -> cardReturnList.add(new CardDTO(card.getCardId(), card.getNameOwner(),
+				card.getCardType(), card.getExpirationDate(), card.getBalance(), card.getState())));
+		return cardReturnList;
 	}
 
 }
